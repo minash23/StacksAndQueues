@@ -6,18 +6,19 @@ public class DNAToRNA {
 
     public static String transcribeToRNA(String dnaSequence) {
         Queue<Character> queue = new LinkedList<>();
-        for (char base : dnaSequence.toCharArray()) {
-            if (base == 'T') {
+        for (int i = 0; i < dnaSequence.length(); i++) {
+            if (dnaSequence.charAt(i) == 'T') {
                 queue.offer('U');
             } else {
-                queue.offer(base);
+                queue.offer(dnaSequence.charAt(i));
             }
         }
-        String ret = "";
+
+        StringBuilder retBuilder = new StringBuilder();
         while (!queue.isEmpty()) {
-            ret = ret + queue.remove();
+            retBuilder.append(queue.remove());
         }
-        return ret;
+        return retBuilder.toString();
     }
 
     public static void main(String[] args) {
